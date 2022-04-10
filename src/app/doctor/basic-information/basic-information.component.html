@@ -1,0 +1,57 @@
+<form [formGroup]="doctorInfo"  (ngSubmit)="saveData()">
+    <div>
+        <div class="row mt-2">
+            <div class="col-6">
+                <label>Select Department</label>
+                <select class="form-control" formControlName="deptId">
+                    <option [value]="-1">--Select Department--</option>
+                    <ng-container *ngFor="let item of dept">
+                        <option [value]="item.id">{{item.name}}</option>
+                    </ng-container>
+                </select>
+                <label class="text-danger" *ngIf="this.doctorInfo.get('deptId')?.getError('required')">Name is required</label>
+            </div>
+            <div class="col-6 form-group">
+                <label>Doctor Name</label>
+                <input type="text" class="form-control" formControlName="name">
+                <label class="text-danger" *ngIf="this.doctorInfo.get('name')?.getError('required')">Name is required</label>
+                <label class="text-danger" *ngIf="this.doctorInfo.get('name')?.getError('minlength')">Minimum 4 chars required</label>
+                <label class="text-danger" *ngIf="this.doctorInfo.get('name')?.getError('maxlength')">Max 6 chars only</label>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-6">
+                <label>Email</label>
+                <input type="email" class="form-control" formControlName="email">
+                <label class="text-danger" *ngIf="this.doctorInfo.get('email')?.getError('required')">Email is required</label>
+            </div>
+            <div class="col-6 form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" formControlName="password">
+                <label class="text-danger" *ngIf="this.doctorInfo.get('password')?.getError('required')">Password is required</label>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-6">
+                <label>Phone No</label>
+                <input type="number" class="form-control" formControlName="phone">
+                <label class="text-danger" *ngIf="this.doctorInfo.get('phone')?.getError('required')">Mobile number is required</label>
+                <label class="text-danger" *ngIf="this.doctorInfo.get('phone')?.getError('min')">min 10 digits only</label>
+                <label class="text-danger" *ngIf="this.doctorInfo.get('phone')?.getError('Max')">Max 10 digits only</label>
+            </div>
+            <div class="col-6 form-group">
+                <label>Address</label>
+                <input type="text" class="form-control" formControlName="address">
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-12">
+                <label>About us</label>
+                <textarea type="text" rows="2" class="form-control" formControlName="aboutus"></textarea>
+            </div>
+        </div>
+        <div class="float-right mt-2">
+            <input type="submit" value="Submit" class="btn btn-primary">
+        </div>
+    </div>
+</form>

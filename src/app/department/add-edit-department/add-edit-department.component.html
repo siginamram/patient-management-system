@@ -1,0 +1,47 @@
+<div>
+  
+    <div class="row">
+        <div class="col-3">
+            <h4>Add Department</h4>
+        </div>
+        <div class="col-7"></div>
+        <div class="col-2" *ngIf="isShown"> <input type="button" value="Back to Department" class="btn btn-danger" routerLink="/department">
+        </div>
+    </div>
+    <div class="mt-2">
+        Name <sub style="color: red;">*</sub>
+    </div>
+    <div class="mt-2">
+        <input type="text"  class="form-control" placeholder="Enter Department Name" [(ngModel)]="depart.name">  <br/>
+        <div class="text-danger" *ngIf="isInvalid && depart.name==''">Enter Department Name"</div>
+    </div>
+
+    <div class="mt-2">
+        Emergency No<sub style="color: red;">*</sub>
+    </div>
+    <div class="mt-2">
+        <input type="number" class="form-control" placeholder="Enter Emergency No" [(ngModel)]="depart.emargency"><br/>
+        <div class="text-danger" *ngIf="isInvalid && depart.emargency==''">Enter emargency No."</div>
+    </div>
+
+    <div class="mt-2">Description<sub style="color: red;">*</sub></div>
+
+    <div class="mt-2">
+        <textarea type="text" rows="5" class="form-control" placeholder="Enter Description" [(ngModel)]="depart.description"></textarea>
+        <div class="text-danger" *ngIf="isInvalid && depart.description==''">Enter Description "</div>
+    </div>
+    <div class="mt-2">Image<sub style="color: red;">*</sub></div>
+    <div class="mt-2">
+        <input type="file" id="file"  />
+    </div>
+    <div class="row">
+    <div class="col-2 mt-2">
+        <input  type="button" [value]="addButton" class="btn btn-primary" (click)="saveDepartment()">
+    </div>
+    <div *ngIf="isSavedsuccess==true" class="col-10 bg-success mt-2" style="text-align: center;">
+      <label>
+          Data saved successfully..
+      </label>
+    </div>
+</div>
+</div>
